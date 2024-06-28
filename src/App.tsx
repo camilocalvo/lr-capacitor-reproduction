@@ -18,7 +18,7 @@ function App() {
 
   const renderTitleScreen = () => {
     return (
-      <div>
+      <div style={{ marginTop: "4rem" }}>
         <IonLabel>Title Page (App Start)</IonLabel>
         <IonButton
           onClick={() => {
