@@ -1,25 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import "@ionic/react/css/core.css";
+
+import {
+  IonApp,
+  IonButton,
+  IonLabel,
+  IonPage,
+  setupIonicReact,
+} from "@ionic/react";
+import Switcher from "./Switcher";
+
+setupIonicReact();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+  const [screen, setScreen] = useState(1);
+
+  const renderTitleScreen = () => {
+    return (
+      <div>
+        <IonLabel>Title Page (App Start)</IonLabel>
+        <IonButton
+          onClick={() => {
+            setScreen(2);
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Go to app
+        </IonButton>
+      </div>
+    );
+  };
+
+  return (
+    <IonApp>
+      <IonPage>
+        {screen === 1 && <>{renderTitleScreen()}</>}
+        {screen === 2 && <Switcher />}
+      </IonPage>
+    </IonApp>
   );
 }
 
